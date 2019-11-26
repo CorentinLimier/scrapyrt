@@ -86,7 +86,10 @@ class ServiceResource(resource.Resource, object):
         }
 
     def render_object(self, obj, request):
-        r = self.json_encoder.encode(obj) + "\n"
+        if 'items' in obj and settings.RETURN_ONLY_ITEMS:
+            r = self.json_encoder.encode(obj['items']) + "\n"
+        else:
+            r = self.json_encoder.encode(obj) + "\n"
         request.setHeader('Content-Type', 'application/json')
         request.setHeader('Access-Control-Allow-Origin', '*')
         request.setHeader('Access-Control-Allow-Methods',

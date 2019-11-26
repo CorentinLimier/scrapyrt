@@ -29,4 +29,7 @@ CRAWL_MANAGER = 'scrapyrt.core.CrawlManager'
 # Limit spider run time
 TIMEOUT_LIMIT = 1000
 # disable in production
-DEBUG = True
+DEBUG = False
+
+# return only items
+RETURN_ONLY_ITEMS = False
